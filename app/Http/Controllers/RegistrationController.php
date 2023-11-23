@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserApplicationRequest;
 use App\Models\sliders;
 use Illuminate\Http\Request;
 use App\Models\Registration;
@@ -15,7 +16,7 @@ class RegistrationController extends Controller
         return view('contact.svyaz');
     }
 
-    public function input(Request $req)
+    public function input(UserApplicationRequest $req)
     {
 
         $soup = new Registration();

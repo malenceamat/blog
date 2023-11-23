@@ -32,7 +32,13 @@
     <div class="light-wrapper">
         <div class="container inner">
             <div class="thin">
-                <h2 class="post-title">Get in Touch</h2>
+                <h2 class="post-title">Get in Touch </h2>
+                @error('name')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+                @error('email')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
                 <p>Nullam quis risus eget urna mollis ornare vel eu leo. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas faucibus.</p>
                 <div class="divide10"></div>
                 <div class="form-container">
