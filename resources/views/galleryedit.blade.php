@@ -24,7 +24,9 @@
                             <tr>
                                 <td>{{$fotka->id}}</td>
                                 <td>{{$fotka->name}}</td>
-                                <td> <form method="POST" action="/galleryedit/{{$fotka->id}}">
+                                <td>
+                                    <div class="row">
+                                    <form method="POST" action="/galleryedit/{{$fotka->id}}">
                                         {{method_field('DELETE')}}
                                         {{csrf_field()}}
                                         <button class="btn btn-danger mb-2">Delete</button>
@@ -33,7 +35,7 @@
                                         @csrf
                                         <button class="btn btn-primary mb-2">Edit</button>
                                     </form>
-
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

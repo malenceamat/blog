@@ -26,6 +26,8 @@ class UserApplicationRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'phone' => ['required', 'numeric', 'digits:11'],
+            'message' => ['required', 'string', 'max:255']
             //, Rule::unique(User::class)->ignore($this->user()->id)
         ];
     }
@@ -33,9 +35,10 @@ class UserApplicationRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'The name is required.',
-            'email.numeric' => 'Invalid category value.',
-            'email.required' => 'Invalid category value.',
+            'name.required' => 'Имя пользователя обязательно',
+            'phone.required' => 'Неверный телефон',
+            'email.required' => 'Неверный email',
+            'message.required' => 'Введите сообщение',
         ];
     }
 }

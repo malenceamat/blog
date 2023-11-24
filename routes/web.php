@@ -12,6 +12,8 @@ use App\Http\Controllers\GalleryRazdelController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RegUserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\RedShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,6 +73,18 @@ Route::get('/search', [RegistrationController::class, 'search']);
 Route::post('/client/{update}', [RegUserController::class, 'index']);
 Route::delete('/client/{delete}', [DeleteController::class, 'delete']);
 Route::post('/client', [RegUserController::class, 'register']);
+Route::get('/shop', [AdminController::class, 'index3']);
+Route::get('/obzorshop', [AdminController::class, 'view']);
+
+
+
+Route::resource('createshop', ShopController::class);
+Route::resource('redshop', RedShopController::class);
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';

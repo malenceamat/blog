@@ -14,4 +14,12 @@ class AdminController extends Controller
     {
         return view('gallery');
     }
+    public function index3()
+    {
+        return view('contact.shop');
+    }
+    public function view()
+    {
+        return view('obzorshop');
+    }
 }
