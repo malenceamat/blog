@@ -47,6 +47,8 @@ class RegUserController extends Controller
         $user->password = $hashedPassword;
         $user->save();
 
+        Registration::where('email', $email)->update(['registered' => 'Зарегистрирован']);
+
 
         return redirect('/reg');
     }

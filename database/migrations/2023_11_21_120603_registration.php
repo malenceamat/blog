@@ -20,6 +20,7 @@ class Registration extends Migration
             $table->string('email')->nullable();
             $table->string('select')->nullable();
             $table->string('message')->nullable();
+            $table->string('registered')->nullable();
             $table->timestamps();
 
         });

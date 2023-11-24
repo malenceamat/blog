@@ -51,6 +51,7 @@
                                         <input type="text" name="name" placeholder="Your name" required="required">
                                         <i class="icon-user"></i>
                                     </label>
+
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -64,7 +65,7 @@
                             <div class="col-sm-6">
                                 <div class="form-field">
                                     <label>
-                                        <input type="tel" name="tel" placeholder="Phone">
+                                        <input type="tel" name="phone" placeholder="Phone">
                                         <i class="icon-phone"></i>
                                     </label>
                                 </div>
@@ -72,7 +73,7 @@
                             <div class="col-sm-6">
                                 <div class="form-field">
                                     <label class="custom-select">
-                                        <select name="department" required="required">
+                                        <select name="select" required="required">
                                             <option value="Закупка">Закупка</option>
                                             <option value="Маркетинг">Маркетинг</option>
                                             <option value="Другое">Другое</option>
@@ -84,6 +85,9 @@
                         </div>
                         <textarea name="message" placeholder="Type your message here..."></textarea>
                         <input type="submit" class="btn" value="Send" data-error="Fix errors" data-processing="Sending..." data-success="Thank you!">
+                        <label>
+                            <input type="hidden" name="hidden"  value="Не зарегистрирован">
+                        </label>
                     </form>
                 </div>
             </div>

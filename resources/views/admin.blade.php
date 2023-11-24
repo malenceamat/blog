@@ -27,8 +27,8 @@
     @yield('qwe')
 
 
-</div>
 
+</div>
 
 
 

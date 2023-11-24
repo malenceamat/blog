@@ -59,14 +59,12 @@
                                         <button class="btn btn-primary mb-2">Зарегистрировать</button>
                                     </div>
                                 </div>
-
+                                <label>
+                                    <input type="hidden" name="ss"  value="{{$data->id}}">
+                                </label>
                             </form>
                         </div>
                         <div class="as-footer-container">
-                           {{-- <form method="post" action="/client">
-                                @csrf
-
-                            </form>--}}
                             <form method="POST" action="/reg/{{$data->id}}">
                                 {{method_field('DELETE')}}
                                 @csrf

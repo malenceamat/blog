@@ -33,11 +33,10 @@
                                 <td>
                                 <div class="cell expand-small-on-hover">{{$ma->message}}</div>
                                 </td>
-                                <td>Зарегистрирован</td>
+                                <td>{{$ma->registered}}</td>
                                 <td>
-
                                     <div class="row">
-                                        <form method="POST" action="/client/{{$ma->id}}">
+                                        <form method="POST" action="/reg/{{$ma->id}}">
                                             {{method_field('DELETE')}}
                                             {{csrf_field()}}
                                             <button class="btn btn-danger mb-2">Удалить</button>

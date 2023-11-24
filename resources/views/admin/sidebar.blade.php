@@ -35,6 +35,9 @@
                         <li class="{{ (request()->is('slider')) ? 'active' : '' }}">
                         <a href="/slider">Баннер</a>
                         </li>
+                        <li class="{{ (request()->is('slider')) ? 'active' : '' }}">
+                            <a href="/slider">Баннер</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="menu">

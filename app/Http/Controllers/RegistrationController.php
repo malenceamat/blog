@@ -18,15 +18,7 @@ class RegistrationController extends Controller
 
     public function input(UserApplicationRequest $req)
     {
-
-        $soup = new Registration();
-        $soup->name = $req->input('name');
-        $soup->email = $req->input('email');
-        $soup->phone = $req->input('tel');
-        $soup->select = $req->input('department');
-        $soup->message = $req->input('message');
-        $soup->save();
-
+        Registration::create($req->all());
         return view('contact.svyaz');
     }
 

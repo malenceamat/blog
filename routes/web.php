@@ -11,6 +11,7 @@ use App\Http\Controllers\RazdelController;
 use App\Http\Controllers\GalleryRazdelController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RegUserController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,37 +28,17 @@ use App\Http\Controllers\RegUserController;
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
 Route::get('/', [GalleryRazdelcontroller::class, 'osnova1']);
-Route::get('/tablica', function () {
-    return view('tablica');
-});
 Route::get('/svyaz',[RegistrationController::class, 'index']);
-Route::get('/editvideo', function () {
-    return view('videoedit');
-});
-Route::get('/galleryedit', function () {
-    return view('galleryedit');
-});
 Route::get('/createslide', [GalleryRazdelcontroller::class, 'formcr']);
-Route::get('/redrazdel', function () {
-    return view('redrazdel');
-});
-Route::get('/createrazdel', function () {
-    return view('createrazdel');
-});
-
 Route::post('/slider', [PostController::class, 'Submit']);
-Route::get('/admin', function () {return view('contentadmin.contentadmin');});
-Route::get('/slider', function () {return view('slider');});
-Route::get('/gallery', function () {return view('gallery');});
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/gallery', [AdminController::class, 'index2']);
 Route::get('/post', [PostController::class, 'index']);
 Route::get('/tablica', [DeleteController::class, 'table']);
 Route::get('/slider', [PostController::class, 'slider']);
@@ -87,19 +68,9 @@ Route::get('/hueta', [RegistrationController::class, 'index2']);
 Route::delete('/reg/{delete}',[RegistrationController::class, 'delete']);
 Route::get('autocomplete', [RegistrationController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [RegistrationController::class, 'search']);
-
 Route::post('/client/{update}', [RegUserController::class, 'index']);
 Route::delete('/client/{delete}', [DeleteController::class, 'delete']);
-
-
-
-
 Route::post('/client', [RegUserController::class, 'register']);
-
-
-
-
-
 
 
 require __DIR__.'/auth.php';
