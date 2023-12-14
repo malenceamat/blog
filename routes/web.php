@@ -48,7 +48,7 @@ Route::get('/tablica/{update}',[EditController::class, 'edit']);
 Route::delete('/tablica/{delete}',[DeleteController::class, 'delete']);
 Route::post('/edit/{edit}',[EditController::class, 'edit']);
 Route::post('edit',[EditController::class, 'update']);
-Route::get('/video', [VideoController::class, 'video']);
+
 Route::post('/video', [VideoController::class, 'insert'])->name('video');
 Route::get('video', [VideoController::class, 'qwe']);
 Route::get('allimage', [GalleryController::class, 'index']);
@@ -78,12 +78,12 @@ Route::get('/obzorshop', [AdminController::class, 'view']);
 
 
 
-Route::resource('createshop', ShopController::class);
-Route::resource('redshop', RedShopController::class);
+Route::get('/redshop' ,[ShopController::class,'show']);
 
-
-
-
+Route::get('/createshop/{id?}' ,[ShopController::class,'index']);
+Route::post('/createshop/save',[ShopController::class, 'create']);
+Route::post('/createshop/edit', [ShopController::class, 'update']);
+Route::delete('/createshop/{delete}',[ShopController::class, 'delete']);
 
 
 

@@ -13,15 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
-    public function edit($id)
-    {
-        $content = Video::find($id);
-        return view('video', compact('content'));
-    }
- public function video()
- {
-     return view('video');
- }
+
     public function qwe()
     {
         $video =Video::firstOrCreate();

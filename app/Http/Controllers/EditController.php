@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
+
 use App\Models\gallery;
 use App\Models\Photo;
 use App\Models\sliders;
@@ -16,9 +16,6 @@ class EditController extends Controller
     {
         $data = sliders::find($id);
         return view('edit', ['data' => $data]);
-
-
-
     }
     public function update(Request $req)
     {
@@ -27,8 +24,9 @@ class EditController extends Controller
         $data->support = $req->support;
         $data->buttons = $req->buttons;
         $data->mama = $req->mama;
-        if ($req->hasFile('image')) {
-            $data = $req->file('image');
+        if (request()->has('image')) {
+            $path = Storage::disk('public')->put('image', $req->file('image'));
+            $data->image = $path;
         }
         $data->save();
         if ($req['body']) {

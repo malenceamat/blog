@@ -2,63 +2,61 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Shop;
+use App\Models\sliders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index($id = null)
     {
-        return view('shop.createshop');
+        $shop = $id ? Shop::find($id) : new Shop();
+        return view('shop.editshop',compact('shop'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(Request $req)
     {
-        //
+        $data = new Shop();
+        $path = Storage::disk('public')->putFile('image', $req->file('image'));
+        $data -> image = $path;
+        $data -> name = $req->name;
+        $data-> price = $req->price;
+        $data -> description = $req -> description;
+        $data->save();
+        return redirect('obzorshop');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show()
     {
-        //
+        $card = Shop::get();
+        return view('shop.redshop',compact('card'));
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function delete($id)
     {
-        //
+        $delete = Shop::find($id);
+        Storage::disk('public')->delete('image', $delete['image']);
+        $delete->delete();
+        return redirect('redshop');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $req)
     {
-        //
-    }
+        $card = Shop::find($req->id);
+        $card->description = $req->description;
+        $card->name = $req->name;
+        $card->price = $req->price;
+        if (request()->has('image'))
+        {$path = Storage::disk('public')->put('image', $req->file('image'));
+            $card->image = $path;}
+        $card->save();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if ($req['image']) {
+            if ($req['image'] == $card['image']) {
+                Storage::disk('public')->delete('image', $card['image']);
+                $card ['image'] =
+                    Storage::disk('public')->put('image', $req['image']);
+            }
+        }
+        $card->save();
+        return redirect('redshop');
     }
 }

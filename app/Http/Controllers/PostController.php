@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
+
 use App\Models\gallery;
 use App\Models\Photo;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\sliders;
 
 class PostController extends Controller
 {
-    public function submit(PostRequest $req)
+    public function submit(Request $req)
     {
         $validatedData = $req->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',

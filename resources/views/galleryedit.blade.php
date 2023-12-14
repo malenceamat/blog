@@ -28,7 +28,7 @@
                                     <div class="row">
                                     <form method="POST" action="/galleryedit/{{$fotka->id}}">
                                         {{method_field('DELETE')}}
-                                        {{csrf_field()}}
+                                        @csrf
                                         <button class="btn btn-danger mb-2">Delete</button>
                                     </form>
                                     <form method="POST" action="/redrazdel/{{$fotka->id}}">

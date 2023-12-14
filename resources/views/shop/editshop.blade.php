@@ -13,13 +13,18 @@
 
                         <div class="row">
                             <div class="col-lg-6 col-12 mx-auto">
-                                <form action="/createshop" method="POST" enctype="multipart/form-data">
+                                <form @if (isset($shop->id)) action="{{url('createshop/edit')}}"
+                                      @else action="{{url('createshop/save')}}" @endif method="post"
+                                      enctype="multipart/form-data" id="save">
                                     @csrf
+                                    @if($shop->id)
+                                        @method('POST')
+                                    @endif
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="file">
                                                 <input type="file" name="image" placeholder="Выбрать изображение"
-                                                       id="image" src="">
+                                                       id="image" value="{{$shop['image']}}" src="">
                                             </label>
                                             @error('image')
                                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -34,20 +39,34 @@
 
                                     <div class="form-row mb-4">
                                         <div class="col-7">
-                                            <input type="text" class="form-control" placeholder="Описание товара"
+                                            <input type="text" class="form-control" placeholder="Описание товара" value="{{$shop['description']}}"
                                                    name="description">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Товар" name="name">
+                                            <input type="text" class="form-control" placeholder="Товар" name="name" value="{{$shop['name']}}">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Цена" name="price">
+                                            <input type="text" class="form-control" placeholder="Цена" name="price" value="{{$shop['price']}}">
                                         </div>
                                     </div>
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-success" id="t123ext">Отправить</button>
-                                    </div>
+
+                                    @if(isset($shop->id))
+                                        <div class="container">
+                                            <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Редактировать</button>
+                                        </div>
+
+                                        <div class="container" id="sem">
+                                            <img src="{{asset('/storage/'. $shop['image'])}}" class="d-block w-25 float-left width=" alt="...">
+                                        </div>
+
+                                    @else
+                                        <div class="container">
+                                            <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать</button>
+                                        </div>
+                                    @endif
+                                    <input type="hidden" name="id" value="{{$shop['id']}}">
                                 </form>
+
                             </div>
                         </div>
 
