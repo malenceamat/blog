@@ -17,25 +17,29 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="fullName">Имя</label>
-                                                        <input readonly type="text" class="form-control mb-4" name="fullName"  value="{{$data->name}}">
+                                                        <input readonly type="text" class="form-control mb-4"
+                                                               name="fullName" value="{{$data->name}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="fullName">E-mail</label>
-                                                        <input readonly type="text" class="form-control mb-4" name="email"  value="{{$data->email}}">
+                                                        <input readonly type="text" class="form-control mb-4"
+                                                               name="email" value="{{$data->email}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="fullName">Цели</label>
-                                                        <input readonly type="text" class="form-control mb-4" id="fullName"  value="{{$data->select}}">
+                                                        <input readonly type="text" class="form-control mb-4"
+                                                               id="fullName" value="{{$data->select}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="fullName">Телефон</label>
-                                                        <input readonly type="text" class="form-control mb-4" id="fullName"  value="{{$data->phone}}">
+                                                        <input readonly type="text" class="form-control mb-4"
+                                                               id="fullName" value="{{$data->phone}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -48,7 +52,8 @@
                                         <div class="row">
                                             <div class="col-md-11 mx-auto">
                                                 <div class="form-group">
-                                                    <textarea readonly class="form-control" id="aboutBio" rows="10" placeholder="{{$data->message}}" ></textarea>
+                                                    <textarea readonly class="form-control" id="aboutBio" rows="10"
+                                                              placeholder="{{$data->message}}"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -60,7 +65,7 @@
                                     </div>
                                 </div>
                                 <label>
-                                    <input type="hidden" name="ss"  value="{{$data->id}}">
+                                    <input type="hidden" name="ss" value="{{$data->id}}">
                                 </label>
                             </form>
                         </div>
@@ -73,11 +78,9 @@
                         </div>
 
 
-
-
                     </div>
                 </div>
             </div>
         </div>
-     </div>
-   </div>
+    </div>
+</div>

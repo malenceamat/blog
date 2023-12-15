@@ -66,7 +66,8 @@
 </div>
 <div class="spinner-grow text-dark" role="status">
     <span class="visually-hidden"></span>
-</div> <div class="spinner-grow text-primary" role="status">
+</div>
+<div class="spinner-grow text-primary" role="status">
     <span class="visually-hidden"></span>
 </div>
 <div class="spinner-grow text-secondary" role="status">

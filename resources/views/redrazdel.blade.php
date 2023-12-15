@@ -1,5 +1,3 @@
-
-
 @include('style')
 @include('admin.sidebar')
 
@@ -17,14 +15,16 @@
                                 <div class="form-group">
                                     <input type="hidden" name="id" value="{{$names['id']}}">
                                     <label>
-                                        <input type="text" class="form-control" name="namerazd" placeholder="Название раздела" value="{{$names['name']}}">
+                                        <input type="text" class="form-control" name="namerazd"
+                                               placeholder="Название раздела" value="{{$names['name']}}">
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="file">
-                                        <input type="file" name="image" placeholder="Выбрать изображение" id="image" src="" >
+                                        <input type="file" name="image" placeholder="Выбрать изображение" id="image"
+                                               src="">
                                     </label>
                                     @error('image')
                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -32,11 +32,13 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <img id="preview-image-before-upload" src={{asset("images/product_image_not_found.gif")}} alt="" style="max-height: 250px;" alt="">
+                                <img id="preview-image-before-upload"
+                                     src={{asset("images/product_image_not_found.gif")}} alt=""
+                                     style="max-height: 250px;" alt="">
                             </div>
                             <div class="container mt-3">
                                 <div class="input-group-append">
-                                    <button type="submit"  class="btn btn-success">Отправить</button>
+                                    <button type="submit" class="btn btn-success">Отправить</button>
                                 </div>
                             </div>
                         </form>
@@ -54,10 +56,12 @@
                                     <td>{{$user->id}}</td>
                                     <td>
                                         <div class="container mt-0" id="sem">
-                                            <img src="{{asset('/storage/'. $user['image'])}}" style="float: left; width: 100px; height: 100px; object-fit: cover;">
+                                            <img src="{{asset('/storage/'. $user['image'])}}"
+                                                 style="float: left; width: 100px; height: 100px; object-fit: cover;">
                                         </div>
                                     </td>
-                                    <td> <form method="POST" action="/redrazdel/{{$user->id}}">
+                                    <td>
+                                        <form method="POST" action="/redrazdel/{{$user->id}}">
                                             {{method_field('DELETE')}}
                                             {{csrf_field()}}
                                             <button class="btn btn-danger mb-2">Delete</button>
@@ -67,38 +71,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     </div>
@@ -113,7 +85,7 @@
     $(document).ready(function () {
 
 
-        $('#image').change(function(){
+        $('#image').change(function () {
 
             let reader = new FileReader();
 

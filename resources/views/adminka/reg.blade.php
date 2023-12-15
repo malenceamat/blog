@@ -7,7 +7,8 @@
             <div class="row layout-top-spacing" id="cancel-row">
                 <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                     <div class="widget-content widget-content-area br-6">
-                        <script src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")}}></script>
+                        <script
+                            src={{asset("https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")}}></script>
                         <table id="zero-config" class="table dt-table-hover" style="width:100%">
                             <thead>
                             <tr>
@@ -23,31 +24,31 @@
                             </thead>
                             <tbody>
                             @foreach($table as $ma)
-                            <tr>
-                                <td>{{$ma->id}}</td>
-                                <td>{{$ma->name}}</td>
-                                <td>{{$ma->phone}}</td>
-                                <td>{{$ma->email}}</td>
-                                <td>{{$ma->select}}</td>
+                                <tr>
+                                    <td>{{$ma->id}}</td>
+                                    <td>{{$ma->name}}</td>
+                                    <td>{{$ma->phone}}</td>
+                                    <td>{{$ma->email}}</td>
+                                    <td>{{$ma->select}}</td>
 
-                                <td>
-                                <div class="cell expand-small-on-hover">{{$ma->message}}</div>
-                                </td>
-                                <td>{{$ma->registered}}</td>
-                                <td>
-                                    <div class="row">
-                                        <form method="POST" action="/reg/{{$ma->id}}">
-                                            {{method_field('DELETE')}}
-                                            {{csrf_field()}}
-                                            <button class="btn btn-danger mb-2">Удалить</button>
-                                        </form>
-                                        <form method="POST" action="/client/{{$ma->id}}">
-                                            {{csrf_field()}}
-                                            <button class="btn btn-primary mb-2">Обзор</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <div class="cell expand-small-on-hover">{{$ma->message}}</div>
+                                    </td>
+                                    <td>{{$ma->registered}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <form method="POST" action="/reg/{{$ma->id}}">
+                                                {{method_field('DELETE')}}
+                                                {{csrf_field()}}
+                                                <button class="btn btn-danger mb-2">Удалить</button>
+                                            </form>
+                                            <form method="POST" action="/client/{{$ma->id}}">
+                                                {{csrf_field()}}
+                                                <button class="btn btn-primary mb-2">Обзор</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                             <tfoot>
@@ -70,7 +71,7 @@
                         </table>
                         <div class="container"
                         {{ $table->links("pagination::bootstrap-4") }}
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

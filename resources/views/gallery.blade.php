@@ -2,21 +2,21 @@
 @include('style')
 
 
-
 <style type="text/css">
-    .gallery
-    {
+    .gallery {
         display: inline-block;
         margin-top: 20px;
     }
-    .close-icon{
+
+    .close-icon {
         border-radius: 50%;
         position: absolute;
         right: 5px;
         top: -10px;
         padding: 5px 8px;
     }
-    .form-image-upload{
+
+    .form-image-upload {
         background: #e8e8e8 none repeat scroll 0 0;
         padding: 15px;
     }
@@ -30,17 +30,14 @@
                     <div class="widget-content widget-content-area br-6">
 
 
-
-
-
-                                <input type="button" onclick="location.href='/createslide';" value="добавить картинку в раздел" class="btn btn-outline-primary mb-2" />
-                                <input type="button" onclick="location.href='/galleryedit';" value="Редактировать раздел" class="btn btn-outline-primary mb-2" />
-                                <input type="button" onclick="location.href='/createrazdel';" value="Создать раздел" class="btn btn-outline-primary mb-2" />
-                                <input type="button" onclick="location.href='/allimage';" value="Все картинки" class="btn btn-outline-primary mb-2" />
-
-
-
-
+                        <input type="button" onclick="location.href='/createslide';" value="добавить картинку в раздел"
+                               class="btn btn-outline-primary mb-2"/>
+                        <input type="button" onclick="location.href='/galleryedit';" value="Редактировать раздел"
+                               class="btn btn-outline-primary mb-2"/>
+                        <input type="button" onclick="location.href='/createrazdel';" value="Создать раздел"
+                               class="btn btn-outline-primary mb-2"/>
+                        <input type="button" onclick="location.href='/allimage';" value="Все картинки"
+                               class="btn btn-outline-primary mb-2"/>
 
 
                     </div>
@@ -51,7 +48,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         $(".fancybox").fancybox({
             openEffect: "none",
             closeEffect: "none"

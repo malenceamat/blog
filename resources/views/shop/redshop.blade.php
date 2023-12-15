@@ -9,7 +9,6 @@
                     <div class="widget-content widget-content-area br-6">
 
 
-
                         <table id="zero-config" class="table dt-table-hover" style="width:100%">
                             <thead>
                             <tr>
@@ -27,14 +26,16 @@
                                     <td>{{$d->id}}</td>
                                     <td>
                                         <div class="container mt-0" id="sem">
-                                            <img src="{{asset('/storage/'. $d['image'])}}" style="float: left; width: 100px; height: 100px; object-fit: cover;">
+                                            <img src="{{asset('/storage/'. $d['image'])}}"
+                                                 style="float: left; width: 100px; height: 100px; object-fit: cover;">
                                         </div>
                                     </td>
                                     <td>{{$d->description}}</td>
                                     <td>{{$d->price}}</td>
                                     <td>{{$d->name}}</td>
 
-                                    <td> <form method="POST" action="/createshop/{{$d->id}}">
+                                    <td>
+                                        <form method="POST" action="/createshop/{{$d->id}}">
                                             {{method_field('DELETE')}}
                                             {{csrf_field()}}
                                             <button class="btn btn-danger mb-2">Delete</button>
@@ -43,24 +44,15 @@
                                             @csrf
                                             <button class="btn btn-primary mb-2">Edit</button>
                                         </form>
+                                        <form method="get" action="/discount/{{$d->id}}">
+                                            @csrf
+                                            <button class="btn btn-outline-warning mb-2">Discount</button>
+                                        </form>
                                         @endforeach
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     </div>

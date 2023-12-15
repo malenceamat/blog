@@ -21,23 +21,23 @@
                             </thead>
                             <tbody>
                             @foreach($names as $fotka)
-                            <tr>
-                                <td>{{$fotka->id}}</td>
-                                <td>{{$fotka->name}}</td>
-                                <td>
-                                    <div class="row">
-                                    <form method="POST" action="/galleryedit/{{$fotka->id}}">
-                                        {{method_field('DELETE')}}
-                                        @csrf
-                                        <button class="btn btn-danger mb-2">Delete</button>
-                                    </form>
-                                    <form method="POST" action="/redrazdel/{{$fotka->id}}">
-                                        @csrf
-                                        <button class="btn btn-primary mb-2">Edit</button>
-                                    </form>
-                                    </div>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{$fotka->id}}</td>
+                                    <td>{{$fotka->name}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <form method="POST" action="/galleryedit/{{$fotka->id}}">
+                                                {{method_field('DELETE')}}
+                                                @csrf
+                                                <button class="btn btn-danger mb-2">Delete</button>
+                                            </form>
+                                            <form method="POST" action="/redrazdel/{{$fotka->id}}">
+                                                @csrf
+                                                <button class="btn btn-primary mb-2">Edit</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

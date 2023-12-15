@@ -44,6 +44,17 @@
                                             <input type="text" class="form-control" placeholder="Цена" name="price">
                                         </div>
                                     </div>
+
+                                    <div class="container mt-5">
+                                        <p>Выбор раздела</p>
+                                        <label>
+                                            <select id="example-getting-started" name="categories[]" multiple>
+                                                @foreach($data as $ke)
+                                                    <option value="1">3</option>
+                                                @endforeach
+                                            </select>
+                                        </label>
+                                    </div>
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-success" id="t123ext">Отправить</button>
                                     </div>
@@ -74,7 +85,6 @@
                             });
 
                         </script>
-
 
 
                     </div>

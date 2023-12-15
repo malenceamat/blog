@@ -1,5 +1,3 @@
-
-
 @extends('site.osnova')
 
 

@@ -2,11 +2,6 @@
 @include('style')
 
 
-
-
-
-
-
 <div class="main-container" id="container">
     @include('admin.sidebar')
     <div id="content" class="main-content">
@@ -16,27 +11,27 @@
                     <div class="widget-content widget-content-area br-6">
 
 
-
-
-
                         <form method="POST" action="{{ Route ('video') }}" enctype="multipart/form-data">
 
-                           @csrf
+                            @csrf
                             <div class="col-md-12">
                                 <div class="form-group">
 
-                                        <input type="file" name="video" placeholder="Выбрать изображение" value="{{$video['video']}}">
-                                    <input type="hidden" class="form-control" name="video"  value="{{$video['video']}}">
+                                    <input type="file" name="video" placeholder="Выбрать изображение"
+                                           value="{{$video['video']}}">
+                                    <input type="hidden" class="form-control" name="video" value="{{$video['video']}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    <input type="text" class="form-control" name="Text" placeholder="Основной текст" value="{{$video['Text']}}">
+                                    <input type="text" class="form-control" name="Text" placeholder="Основной текст"
+                                           value="{{$video['Text']}}">
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>
-                                    <input type="text" class="form-control" name="SmallText" placeholder="Вспомогательный текст" value="{{$video['SmallText']}}">
+                                    <input type="text" class="form-control" name="SmallText"
+                                           placeholder="Вспомогательный текст" value="{{$video['SmallText']}}">
                                 </label>
                             </div>
 
@@ -49,16 +44,9 @@
                         </form>
 
 
-
-                            <video width="320" height="240" autoplay muted loop>
-                                <source src="{{asset('/storage/'. $video['video'])}}">
-                            </video>
-
-
-
-
-
-
+                        <video width="320" height="240" autoplay muted loop>
+                            <source src="{{asset('/storage/'. $video['video'])}}">
+                        </video>
 
 
                     </div>
@@ -74,7 +62,7 @@
     $(document).ready(function () {
 
 
-        $('#image').change(function(){
+        $('#image').change(function () {
 
             let reader = new FileReader();
 

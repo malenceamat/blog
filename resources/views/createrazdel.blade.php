@@ -3,7 +3,6 @@
 @include('admin.sidebar')
 
 
-
 <div class="main-container" id="container">
     <div id="content" class="main-content">
         <div class="layout-px-spacing">
@@ -12,15 +11,13 @@
                     <div class="widget-content widget-content-area br-6">
 
 
-
-
-
                         <form method="POST" action="/createrazdel" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
                                 <label>
-                                    <input type="text" class="form-control" name="textrazdel" placeholder="Название раздела">
+                                    <input type="text" class="form-control" name="textrazdel"
+                                           placeholder="Название раздела">
                                 </label>
                             </div>
                             <div class="container">
@@ -29,9 +26,6 @@
                                 </div>
                             </div>
                         </form>
-
-
-
 
 
                     </div>

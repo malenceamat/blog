@@ -10,61 +10,44 @@
                         <div class="row">
 
 
-                  <form action="/createslide" method="POST" enctype="multipart/form-data">
-                                      @csrf
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="file">
-                                        <input type="file" name="image" placeholder="Выбрать изображение" id="image" src="">
-                                    </label>
-                                    @error('image')
-                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                    @enderror
+                            <form action="/createslide" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="file">
+                                            <input type="file" name="image" placeholder="Выбрать изображение" id="image"
+                                                   src="">
+                                        </label>
+                                        @error('image')
+                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <img id="preview-image-before-upload" src={{asset("images/product_image_not_found.gif")}} alt="" style="max-height: 250px;" alt="">
-                            </div>
+                                <div class="col-md-12 mb-2">
+                                    <img id="preview-image-before-upload"
+                                         src={{asset("images/product_image_not_found.gif")}} alt=""
+                                         style="max-height: 250px;" alt="">
+                                </div>
 
-                      <div class="container mt-5">
-                          <p>Выбор раздела</p>
-                          <label>
-                              <select id="example-getting-started" name="categories[]" multiple>
-                                  @foreach($data as $ke)
-                                      <option value="{{$ke->id}}">{{$ke->name}}</option>
-                                  @endforeach
-                              </select>
-                          </label>
-                      </div>
-                      <div class="container mt-3">
-                          <div class="input-group-append">
-                              <button type="submit" class="btn btn-success">Отправить</button>
-                          </div>
-                      </div>
-                  </form>
-
-
-
+                                <div class="container mt-5">
+                                    <p>Выбор раздела</p>
+                                    <label>
+                                        <select id="example-getting-started" name="categories[]" multiple>
+                                            @foreach($data as $ke)
+                                                <option value="{{$ke->id}}">{{$ke->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="container mt-3">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-success">Отправить</button>
+                                    </div>
+                                </div>
+                            </form>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,7 +60,7 @@
     $(document).ready(function () {
 
 
-        $('#image').change(function(){
+        $('#image').change(function () {
 
             let reader = new FileReader();
 
@@ -94,6 +77,6 @@
 
 </script>
 
-<script>$(document).ready(function() {
+<script>$(document).ready(function () {
         $('#example-getting-started').multiselect();
     });</script>

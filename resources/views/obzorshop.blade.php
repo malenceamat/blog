@@ -9,25 +9,12 @@
                     <div class="widget-content widget-content-area br-6">
 
 
-
-
-                        <input type="button" onclick="location.href='/createshop';" value="Создать карточку товара" class="btn btn-outline-primary mb-2" />
-                        <input type="button" onclick="location.href='/redshop';" value="Редактировать карточку товара" class="btn btn-outline-primary mb-2" />
-                        <input type="button" onclick="location.href='/redshop';" value="Настройка скидки" class="btn btn-outline-primary mb-2" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <input type="button" onclick="location.href='/createshop';" value="Создать карточку товара"
+                               class="btn btn-outline-primary mb-2"/>
+                        <input type="button" onclick="location.href='/redshop';" value="Редактировать карточку товара"
+                               class="btn btn-outline-primary mb-2"/>
+                        <input type="button" onclick="location.href='/redshop';" value="Настройка скидки"
+                               class="btn btn-outline-primary mb-2"/>
 
 
                     </div>

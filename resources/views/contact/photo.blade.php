@@ -1,4 +1,3 @@
-
 <div class="inverse-wrapper inner bp0">
     <div class="container">
         <div class="thin text-center">
@@ -9,7 +8,7 @@
             <!-- /.headline -->
             <div class="divide30"></div>
             <figure>
-                <img src="style/images/art/hygge.png" alt="" />
+                <img src="style/images/art/hygge.png" alt=""/>
             </figure>
         </div>
         <!-- /.thin -->

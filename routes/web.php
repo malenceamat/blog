@@ -13,7 +13,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RegUserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\RedShopController;
+use App\Http\Controllers\DiscountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,16 +75,19 @@ Route::delete('/client/{delete}', [DeleteController::class, 'delete']);
 Route::post('/client', [RegUserController::class, 'register']);
 Route::get('/shop', [AdminController::class, 'index3']);
 Route::get('/obzorshop', [AdminController::class, 'view']);
-
-
-
 Route::get('/redshop' ,[ShopController::class,'show']);
+
+
 
 Route::get('/createshop/{id?}' ,[ShopController::class,'index']);
 Route::post('/createshop/save',[ShopController::class, 'create']);
 Route::post('/createshop/edit', [ShopController::class, 'update']);
 Route::delete('/createshop/{delete}',[ShopController::class, 'delete']);
 
+
+Route::get('/discount/{id?}',[DiscountController::class,'index']);
+Route::post('/discount/save',[DiscountController::class,'update']);
+Route::post('/discount/edit',[DiscountController::class,'update']);
 
 
 require __DIR__.'/auth.php';

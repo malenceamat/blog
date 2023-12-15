@@ -9,8 +9,6 @@
                     <div class="widget-content widget-content-area br-6">
 
 
-
-
                         <table id="zero-config" class="table dt-table-hover" style="width:100%">
                             <thead>
                             <tr>
@@ -32,7 +30,8 @@
                                     <td>{{$ma->email}}</td>
                                     <td>{{$ma->select}}</td>
                                     <td>{{$ma->message}}</td>
-                                    <td><div class="row">
+                                    <td>
+                                        <div class="row">
                                             <form method="POST" action="/reg/{{$ma->id}}">
                                                 {{method_field('DELETE')}}
                                                 {{csrf_field()}}
@@ -65,12 +64,10 @@
                         </table>
 
 
-
-
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>

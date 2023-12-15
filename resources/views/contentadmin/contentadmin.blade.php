@@ -5,59 +5,81 @@
 
 
 @section('qwe')
-<div class="main-container" id="container">
-    @include('admin.sidebar')
-    <div id="content" class="main-content">
-        <div class="container mt-5">
+    <div class="main-container" id="container">
+        @include('admin.sidebar')
+        <div id="content" class="main-content">
+            <div class="container mt-5">
 
-        </div>
-        <div id="card_1" class="col-lg-12 layout-spacing layout-top-spacing">
-            <div class="statbox widget box box-shadow">
-                <div class="widget-content widget-content-area">
-                    @include('smeh.girlyanda')
-                    <div class="row">
-                        <div class="card component-card_1">
-                            <div class="card-body">
-                                <div class="icon-svg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+            <div id="card_1" class="col-lg-12 layout-spacing layout-top-spacing">
+                <div class="statbox widget box box-shadow">
+                    <div class="widget-content widget-content-area">
+                        @include('smeh.girlyanda')
+                        <div class="row">
+                            <div class="card component-card_1">
+                                <div class="card-body">
+                                    <div class="icon-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-droplet">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h5 class="card-title" align="center"><a href="/tablica">Баннер</a></h5>
+                                    <p class="card-text" align="center"><a href="/tablica">Редактировать Баннер.</a></p>
                                 </div>
-                                <h5 class="card-title" align="center"><a href="/tablica">Баннер</a> </h5>
-                                <p class="card-text" align="center"><a href="/tablica">Редактировать Баннер.</a></p>
+                            </div>
+                            <div class="card component-card_1">
+                                <div class="card-body">
+                                    <div class="icon-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-droplet">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h5 class="card-title" align="center"><a href="/gallery">Галерея</a></h5>
+                                    <p class="card-text" align="center"><a href="/gallery">Редактировать галерею.</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card component-card_1">
+                                <div class="card-body">
+                                    <div class="icon-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-droplet">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h5 class="card-title" align="center"><a href="/video">Видео</a></h5>
+                                    <p class="card-text" align="center"><a href="/video">Редактировать видео.</a></p>
+                                </div>
+                            </div>
+                            <div class="card component-card_1">
+                                <div class="card-body">
+                                    <div class="icon-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-droplet">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h5 class="card-title" align="center"><a href="/obzorshop">Магазин</a></h5>
+                                    <p class="card-text" align="center"><a href="/obzorshop">Редактировать магазин.</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="card component-card_1">
-                            <div class="card-body">
-                                <div class="icon-svg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                                </div>
-                                <h5 class="card-title" align="center"><a href="/gallery">Галерея</a> </h5>
-                                <p class="card-text" align="center"><a href="/gallery">Редактировать галерею.</a></p>
-                            </div>
-                        </div>
-                        <div class="card component-card_1">
-                            <div class="card-body">
-                                <div class="icon-svg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                                </div>
-                                <h5 class="card-title" align="center"><a href="/video">Видео</a> </h5>
-                                <p class="card-text" align="center"><a href="/video">Редактировать видео.</a></p>
-                            </div>
-                        </div>
-                        <div class="card component-card_1">
-                            <div class="card-body">
-                                <div class="icon-svg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                                </div>
-                                <h5 class="card-title" align="center"><a href="/obzorshop">Магазин</a> </h5>
-                                <p class="card-text" align="center"><a href="/obzorshop">Редактировать магазин.</a></p>
-                            </div>
-                        </div>
+                        @include('smeh.girlyanda')
                     </div>
-                    @include('smeh.girlyanda')
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection

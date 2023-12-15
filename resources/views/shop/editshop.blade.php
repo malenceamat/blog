@@ -39,29 +39,48 @@
 
                                     <div class="form-row mb-4">
                                         <div class="col-7">
-                                            <input type="text" class="form-control" placeholder="Описание товара" value="{{$shop['description']}}"
+                                            <input type="text" class="form-control" placeholder="Описание товара"
+                                                   value="{{$shop['description']}}"
                                                    name="description">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Товар" name="name" value="{{$shop['name']}}">
+                                            <input type="text" class="form-control" placeholder="Товар" name="name"
+                                                   value="{{$shop['name']}}">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Цена" name="price" value="{{$shop['price']}}">
+                                            <input type="text" class="form-control" placeholder="Цена" name="price"
+                                                   value="{{$shop['price']}}">
                                         </div>
+                                    </div>
+                                    <div class="container mt-5">
+                                        <p>Выбор раздела</p>
+                                        <label>
+                                            <select id="example-getting-started" name="categories[]" multiple>
+
+                                                <option value="time">Счастливые часы</option>
+                                                <option value=""></option>
+                                                <option value=""></option>
+
+                                            </select>
+                                        </label>
                                     </div>
 
                                     @if(isset($shop->id))
                                         <div class="container">
-                                            <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Редактировать</button>
+                                            <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">
+                                                Редактировать
+                                            </button>
                                         </div>
 
                                         <div class="container" id="sem">
-                                            <img src="{{asset('/storage/'. $shop['image'])}}" class="d-block w-25 float-left width=" alt="...">
+                                            <img src="{{asset('/storage/'. $shop['image'])}}"
+                                                 class="d-block w-25 float-left width=" alt="...">
                                         </div>
 
                                     @else
                                         <div class="container">
-                                            <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать</button>
+                                            <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">Создать
+                                            </button>
                                         </div>
                                     @endif
                                     <input type="hidden" name="id" value="{{$shop['id']}}">
@@ -93,7 +112,9 @@
                             });
 
                         </script>
-
+                        <script>$(document).ready(function () {
+                                $('#example-getting-started').multiselect();
+                            });</script>
 
 
                     </div>

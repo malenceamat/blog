@@ -2,7 +2,6 @@
 @include('style')
 
 
-
 <div class="main-container" id="container">
     @include('admin.sidebar')
     <div id="content" class="main-content">
@@ -28,14 +27,16 @@
                                     <td>{{$data->id}}</td>
                                     <td>
                                         <div class="container mt-0" id="sem">
-                                            <img src="{{asset('/storage/'. $data['body'])}}" style="float: left; width: 100px; height: 100px; object-fit: cover;">
+                                            <img src="{{asset('/storage/'. $data['body'])}}"
+                                                 style="float: left; width: 100px; height: 100px; object-fit: cover;">
                                         </div>
                                     </td>
                                     <td>{{$data->head}}</td>
                                     <td>{{$data->support}}</td>
                                     <td>{{$data->buttons}}</td>
                                     <td>{{$data->mama}}</td>
-                                    <td> <form method="POST" action="/tablica/{{$data->id}}">
+                                    <td>
+                                        <form method="POST" action="/tablica/{{$data->id}}">
                                             {{method_field('DELETE')}}
                                             {{csrf_field()}}
                                             <button class="btn btn-danger mb-2">Delete</button>
