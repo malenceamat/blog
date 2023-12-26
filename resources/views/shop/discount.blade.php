@@ -62,7 +62,7 @@
                                 <div id="dynamicForm2" class="hidden">
                                     <label for="inputField2">Введите кол-во товаров:</label>
                                     <input type="text" id="inputField2" class="form-control" placeholder="3"
-                                           name="count" {{--value="{{$dis['count']}}"--}}>
+                                           name="count">
                                 </div>
                             </div>
                             <div>
