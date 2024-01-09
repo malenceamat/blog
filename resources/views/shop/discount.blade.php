@@ -93,7 +93,7 @@
 
                             @else
                                 <button class="btn btn-outline-secondary btn-rounded mb-2 me-4">
-                                    создать скидку
+                                    Создать скидку
                                 </button>
 
                             @endif

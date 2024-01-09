@@ -13,7 +13,7 @@
                                class="btn btn-outline-primary mb-2"/>
                         <input type="button" onclick="location.href='/redshop';" value="Редактировать карточку товара"
                                class="btn btn-outline-primary mb-2"/>
-                        <input type="button" onclick="location.href='/redshop';" value="Настройка скидки"
+                        <input type="button" onclick="location.href='/redshop';" value="Заказы"
                                class="btn btn-outline-primary mb-2"/>
 
 

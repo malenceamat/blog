@@ -11,4 +11,9 @@ class Discount extends Model
 
     protected $table = 'discount';
     protected $fillable = ['start','end','count','discount','delivery'];
+
+    public function skidka()
+    {
+        return $this->hasManyThrough(Shop::class,'discount_shop','discount_id','shop_id');
+    }
 }

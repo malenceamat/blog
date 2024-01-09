@@ -12,19 +12,23 @@ class DiscountController extends Controller
     public function index($id = null)
     {
         $dis = $id ? Discount::find($id) : new Discount();
-        return view('shop.discount',compact('dis'));
+        return view('shop.discount', compact('dis'));
     }
-    public function create(Request $req)
+
+    /*public function create(Request $req)
     {
-        Discount::create($req->all());
+        $dis = Discount::create($req->all());
         return redirect('redshop');
-    }
+    }*/
     public function update(Request $req)
     {
 
 
-        Discount::updateOrCreate(['id' => $req->id],$req->except('_token','_method'));
+        $discount = Discount::updateOrCreate(['id' => $req->id], $req->except('_token', '_method'));
 
+        $tovar = Shop::find($req->id);
+
+        $tovar->tovar()->attach($discount->id);
 
 
         return redirect('redshop');

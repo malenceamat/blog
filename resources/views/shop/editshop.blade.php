@@ -52,18 +52,18 @@
                                                    value="{{$shop['price']}}">
                                         </div>
                                     </div>
-                                    <div class="container mt-5">
+                                    {{--<div class="container mt-5">
                                         <p>Выбор раздела</p>
                                         <label>
                                             <select id="example-getting-started" name="categories[]" multiple>
 
                                                 <option value="time">Счастливые часы</option>
-                                                <option value=""></option>
+                                                <option value="">123123</option>
                                                 <option value=""></option>
 
                                             </select>
                                         </label>
-                                    </div>
+                                    </div>--}}
 
                                     @if(isset($shop->id))
                                         <div class="container">

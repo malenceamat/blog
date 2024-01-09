@@ -11,4 +11,9 @@ class Shop extends Model
 
     protected $table = 'shop';
     protected $fillable = ['image', 'description', 'name', 'price'];
+
+    public function tovar()
+    {
+        return $this->belongsToMany(Discount::class,'discount_shop','shop_id','discount_id');
+    }
 }
