@@ -22,16 +22,14 @@ class DiscountController extends Controller
     }*/
     public function update(Request $req)
     {
-
-
         $discount = Discount::updateOrCreate(['id' => $req->id], $req->except('_token', '_method'));
-
         $tovar = Shop::find($req->id);
-
-        $tovar->tovar()->attach($discount->id);
-
+        $tovar->tovar()->sync([$discount->id], false);
 
         return redirect('redshop');
     }
+
+
+
 
 }

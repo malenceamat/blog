@@ -164,32 +164,138 @@
 
 
             <form action="#" method="POST">
-                <div class="row">
-                    <div class="cards">
 
-                        <div class="card">
-                            <div class="card__top">
-                                <a href="#" class="card__image">
-                                    <img src="./image/iphone-14-pro-max-gold.png"/></a>
-                            </div>
-                            <div class="card__bottom">
-                                <!-- Цены на товар (с учетом скидки и без)-->
-                                <div class="card__prices">
-                                    <div class="card__price card__price--discount">135 000</div>
-                                    <div class="card__price card__price--common">150 000</div>
+            </form>
+            <div class="row">
+                <div class="catalog">
+                    <div class="product">
+                        <div class="row">
+                            <div class="cards">
+
+                                <div class="card">
+                                    <div class="card__top">
+                                        <a href="#" class="card__image">
+                                            <img src="./image/iphone-14-pro-max-gold.png"/></a>
+                                    </div>
+                                    <div class="card__bottom">
+                                        <!-- Цены на товар (с учетом скидки и без)-->
+                                        <div class="card__prices">
+                                            <div class="card__price card__price--discount">135 000</div>
+                                            <div class="card__price card__price--common">150 000</div>
+                                        </div>
+                                        <p href="#" class="card__title">
+                                            Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
+                                        </p>
+                                        <button onclick="addToCart(this)" class="card__add">Добавить в корзину</button>
+                                    </div>
                                 </div>
-                                <p href="#" class="card__title">
-                                    Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
-                                </p>
-                                <button class="card__add">В корзину</button>
+
+
+                                <div class="card">
+                                    <div class="card__top">
+                                        <a href="#" class="card__image">
+                                            <img src="./image/iphone-14-pro-max-gold.png"/></a>
+                                    </div>
+                                    <div class="card__bottom">
+                                        <!-- Цены на товар (с учетом скидки и без)-->
+                                        <div class="card__prices">
+                                            <div class="card__price card__price--discount">135 000</div>
+                                            <div class="card__price card__price--common">150 000</div>
+                                        </div>
+                                        <p href="#" class="card__title">
+                                            Смартфон Apple IPhone 14 Pro Max 256Gb123, золотой
+                                        </p>
+                                        <button onclick="addToCart(this)" class="card__add">Добавить в корзину</button>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
-
-                        
-
                     </div>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class="cart" id="cart" style="display: none;">
+                        <h2>Корзина</h2>
+                        <div id="cart-items">
+                            <!-- Тут будут отображаться товары в корзине -->
+                        </div>
+                        <button onclick="checkout()">Оформить</button>
+                    </div>
+
+
                 </div>
-            </form>
+
+
+            </div>
+
+
+            <div class="modal" id="modal" style="width: 25%;height: 25%;position: static">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <p>Ваш заказ оформлен. Спасибо!</p>
+                </div>
+            </div>
+
+
+            <script>
+                // JavaScript код здесь
+                let cartItems = [];
+
+                function addToCart(button) {
+                    button.innerText = "В корзине";
+                    button.disabled = true;
+                    let product = button.previousElementSibling.innerText;
+                    cartItems.push({name: product, quantity: 1});
+                    updateCartDisplay();
+                    document.getElementById("cart").style.display = "block";
+                }
+
+                function updateCartDisplay() {
+                    let cartDiv = document.getElementById("cart-items");
+                    cartDiv.innerHTML = '';
+                    cartItems.forEach(item => {
+                        let div = document.createElement("div");
+                        div.innerHTML = `${item.name} - ${item.quantity} <button onclick="incrementItem('${item.name}', 1)">+</button> <button onclick="incrementItem('${item.name}', -1)">-</button>`;
+                        cartDiv.appendChild(div);
+                    });
+                }
+
+                // Функция изменения количества товара
+                function incrementItem(name, increment) {
+                    let item = cartItems.find(item => item.name === name);
+                    item.quantity += increment;
+                    if (item.quantity < 1) {
+                        cartItems = cartItems.filter(item => item.name !== name);
+                        let buttons = document.querySelectorAll(".product button");
+                        buttons.forEach(button => {
+                            if (button.previousElementSibling.innerText === name) {
+                                button.innerText = "Добавить в корзину";
+                                button.disabled = false;
+                            }
+                        });
+                    }
+                    updateCartDisplay();
+                    if (cartItems.length === 0) {
+                        document.getElementById("cart").style.display = "none"; // Скрыть корзину
+                    }
+                }
+
+                function checkout() {
+                    document.getElementById("modal").style.display = "block";
+                }
+
+                function closeModal() {
+                    document.getElementById("modal").style.display = "none";
+                }
+            </script>
+
 
         </div>
     </div>
