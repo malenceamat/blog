@@ -156,6 +156,25 @@
         background-color: #ff6633;
         color: #fff;
     }
+
+
+    .cart {
+        display: none;
+    }
+
+    .cart-item {
+        margin-bottom: 10px;
+    }
+
+    .cart-item button {
+        margin-left: 5px;
+    }
+
+    .checkout-message {
+        display: none;
+    }
+
+
 </style>
 
 <div class="light-wrapper">
@@ -166,46 +185,75 @@
             <form action="#" method="POST">
 
             </form>
+
+            {{--<div class="card" data-price="123123">
+                <div class="card__top">
+                    <a href="#" class="card__image">
+                        <img src={{asset("./image/iphone-14-pro-max-gold.png")}}/></a>
+                </div>
+                <div class="card__bottom">
+                    <!-- Цены на товар (с учетом скидки и без)-->
+                    <div class="card__prices">
+                        <div class="card__price card__price--discount">135 000</div>
+                        <div class="card__price card__price--common">150 000</div>
+                    </div>
+                    <p href="#" class="card__title">
+                        Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
+                    </p>
+                    <button class="add-to-cart-btn">Добавить в корзину</button>
+                </div>
+            </div>--}}
+
+
+
+
+
+
+
+
+
+
+
             <div class="row">
                 <div class="catalog">
-                    <div class="product">
+                    <div class="products">
                         <div class="row">
                             <div class="cards">
 
-                                <div class="card">
+                                <div class="card" data-price="2">
                                     <div class="card__top">
                                         <a href="#" class="card__image">
-                                            <img src="./image/iphone-14-pro-max-gold.png"/></a>
+                                            <img src={{asset("./image/iphone-14-pro-max-gold.png")}}/></a>
                                     </div>
                                     <div class="card__bottom">
                                         <!-- Цены на товар (с учетом скидки и без)-->
                                         <div class="card__prices">
-                                            <div class="card__price card__price--discount">135 000</div>
+                                            <div class="card__price card__price--discount">2</div>
                                             <div class="card__price card__price--common">150 000</div>
                                         </div>
                                         <p href="#" class="card__title">
                                             Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
                                         </p>
-                                        <button onclick="addToCart(this)" class="card__add">Добавить в корзину</button>
+                                        <button class="add-to-cart-btn">Добавить в корзину</button>
                                     </div>
                                 </div>
 
 
-                                <div class="card">
+                                <div class="card" data-price="1">
                                     <div class="card__top">
                                         <a href="#" class="card__image">
-                                            <img src="./image/iphone-14-pro-max-gold.png"/></a>
+                                            <img src={{asset("./image/iphone-14-pro-max-gold.png")}}/></a>
                                     </div>
                                     <div class="card__bottom">
                                         <!-- Цены на товар (с учетом скидки и без)-->
                                         <div class="card__prices">
-                                            <div class="card__price card__price--discount">135 000</div>
+                                            <div class="card__price card__price--discount">1</div>
                                             <div class="card__price card__price--common">150 000</div>
                                         </div>
                                         <p href="#" class="card__title">
-                                            Смартфон Apple IPhone 14 Pro Max 256Gb123, золотой
+                                            Смартфон Apple IPhone 14 Pro Max 256Gb, ещкере
                                         </p>
-                                        <button onclick="addToCart(this)" class="card__add">Добавить в корзину</button>
+                                        <button class="add-to-cart-btn">Добавить в корзину</button>
                                     </div>
                                 </div>
 
@@ -221,87 +269,120 @@
                     <br>
                     <br>
 
-                    <div class="cart" id="cart" style="display: none;">
+                    <div class="cart" style="display: none;">
                         <h2>Корзина</h2>
-                        <div id="cart-items">
-                            <!-- Тут будут отображаться товары в корзине -->
-                        </div>
-                        <button onclick="checkout()">Оформить</button>
+                        <div class="cart-items"></div>
+                        <p>Итого: <span id="total-price">0</span> руб</p>
+                        <button class="checkout-btn">Оформить заказ</button>
+                        <p class="checkout-message" style="display: none;"></p>
                     </div>
-
-
-                </div>
-
-
-            </div>
-
-
-            <div class="modal" id="modal" style="width: 25%;height: 25%;position: static">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <p>Ваш заказ оформлен. Спасибо!</p>
                 </div>
             </div>
-
-
-            <script>
-                // JavaScript код здесь
-                let cartItems = [];
-
-                function addToCart(button) {
-                    button.innerText = "В корзине";
-                    button.disabled = true;
-                    let product = button.previousElementSibling.innerText;
-                    cartItems.push({name: product, quantity: 1});
-                    updateCartDisplay();
-                    document.getElementById("cart").style.display = "block";
-                }
-
-                function updateCartDisplay() {
-                    let cartDiv = document.getElementById("cart-items");
-                    cartDiv.innerHTML = '';
-                    cartItems.forEach(item => {
-                        let div = document.createElement("div");
-                        div.innerHTML = `${item.name} - ${item.quantity} <button onclick="incrementItem('${item.name}', 1)">+</button> <button onclick="incrementItem('${item.name}', -1)">-</button>`;
-                        cartDiv.appendChild(div);
-                    });
-                }
-
-                // Функция изменения количества товара
-                function incrementItem(name, increment) {
-                    let item = cartItems.find(item => item.name === name);
-                    item.quantity += increment;
-                    if (item.quantity < 1) {
-                        cartItems = cartItems.filter(item => item.name !== name);
-                        let buttons = document.querySelectorAll(".product button");
-                        buttons.forEach(button => {
-                            if (button.previousElementSibling.innerText === name) {
-                                button.innerText = "Добавить в корзину";
-                                button.disabled = false;
-                            }
-                        });
-                    }
-                    updateCartDisplay();
-                    if (cartItems.length === 0) {
-                        document.getElementById("cart").style.display = "none"; // Скрыть корзину
-                    }
-                }
-
-                function checkout() {
-                    document.getElementById("modal").style.display = "block";
-                }
-
-                function closeModal() {
-                    document.getElementById("modal").style.display = "none";
-                }
-            </script>
 
 
         </div>
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+        const cart = document.querySelector('.cart');
+        const cartItems = document.querySelector('.cart-items');
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const checkoutMessage = document.querySelector('.checkout-message');
+        let totalPrice = 0;
 
+        addToCartBtns.forEach((btn, index) => {
+            btn.addEventListener('click', function () {
+                if (btn.textContent === 'Добавить в корзину') {
+                    btn.textContent = 'В корзине';
+                    const product = document.createElement('div');
+                    product.classList.add('cart-item');
+                    let productPrice = parseInt(this.closest('.card').getAttribute('data-price'));
+                    product.innerHTML = `
+          <span>${this.closest('.card').querySelector('p').textContent}</span>
+          <button class="quantity-btn" data-action="decrease">-</button>
+          <span class="quantity">1</span>
+          <button class="quantity-btn" data-action="increase">+</button>
+        `;
+                    cartItems.appendChild(product);
+                    totalPrice += productPrice;
+                    document.getElementById('total-price').textContent = totalPrice;
+                    cart.style.display = 'block';
 
+                    const quantityBtns = product.querySelectorAll('.quantity-btn');
+                    quantityBtns.forEach(btn => {
+                        btn.addEventListener('click', function () {
+                            const action = btn.getAttribute('data-action');
+                            const quantityElement = product.querySelector('.quantity');
+                            let quantity = parseInt(quantityElement.textContent);
+                            if (action === 'increase') {
+                                quantity++;
+                                totalPrice += productPrice;
+                            } else if (action === 'decrease' && quantity > 1) {
+                                quantity--;
+                                totalPrice -= productPrice;
+                            } else if (action === 'decrease' && quantity === 1) {
+                                quantity--;
+                                totalPrice -= productPrice;
+                                product.remove();
+                                btn.textContent = 'Добавить в корзину';
+                                updateAddToCartBtn(); // Обновляем надпись на кнопке при удалении последнего товара
+                            }
+                            quantityElement.textContent = quantity;
+                            updateCartVisibility();
+                            updateTotalPrice();
+                        });
+                    });
+                } else if (btn.textContent === 'В корзине') {
+                    btn.textContent = 'Добавить в корзину';
+                    let productPrice = parseInt(this.closest('.card').getAttribute('data-price'));
+                    totalPrice -= productPrice;
+                    document.getElementById('total-price').textContent = totalPrice;
+                    let productName = this.closest('.product').querySelector('card').textContent;
+                    let productsInCart = cartItems.getElementsByClassName('cart-item');
+                    for (let i = 0; i < productsInCart.length; i++) {
+                        if (productsInCart[i].textContent.includes(productName)) {
+                            productsInCart[i].remove();
+                        }
+                    }
+                    updateCartVisibility();
+                    updateAddToCartBtn(); // Обновляем надпись на кнопке при удалении товара из корзины
+                }
+            });
+        });
 
+        function updateTotalPrice() {
+            document.getElementById('total-price').textContent = totalPrice;
+        }
 
+        function updateCartVisibility() {
+            if (cartItems.children.length === 0) {
+                cart.style.display = 'none';
+            }
+        }
+
+        function updateAddToCartBtn() {
+            addToCartBtns.forEach(btn => {
+                let productName = btn.closest('.card').querySelector('card').textContent;
+                let productsInCart = cartItems.getElementsByClassName('cart-item');
+                let isProductInCart = false;
+                for (let i = 0; i < productsInCart.length; i++) {
+                    if (productsInCart[i].textContent.includes(productName)) {
+                        isProductInCart = true;
+                        break;
+                    }
+                }
+                if (!isProductInCart) {
+                    btn.textContent = 'Добавить в корзину';
+                }
+            });
+        }
+
+        checkoutBtn.addEventListener('click', function () {
+            checkoutMessage.textContent = 'Ваш заказ оформлен. С вами свяжутся для уточнения деталей.';
+            checkoutMessage.style.display = 'block';
+        });
+    });
+</script>
