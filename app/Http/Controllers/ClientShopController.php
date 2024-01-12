@@ -14,9 +14,10 @@ class ClientShopController extends Controller
 
         $data = Shop::with('tovar')->get();
 
-
         $product = Shop::with('tovar')->first()->tovar[0]->discount;
+
         dd($product);
         return view('shop.client.shop-view',compact('data'));
     }
+
 }
