@@ -86,11 +86,6 @@
         flex: 0 0 50%; /* Размещаем цены равномерно в две колонки */
     }
 
-    .card__price::after {
-        content: "₽";
-        margin-left: 4px;
-        position: relative;
-    }
 
     .card__price--discount {
         font-weight: 700;
@@ -185,79 +180,37 @@
             <form action="#" method="POST">
 
             </form>
-
-            {{--<div class="card" data-price="123123">
-                <div class="card__top">
-                    <a href="#" class="card__image">
-                        <img src={{asset("./image/iphone-14-pro-max-gold.png")}}/></a>
-                </div>
-                <div class="card__bottom">
-                    <!-- Цены на товар (с учетом скидки и без)-->
-                    <div class="card__prices">
-                        <div class="card__price card__price--discount">135 000</div>
-                        <div class="card__price card__price--common">150 000</div>
-                    </div>
-                    <p href="#" class="card__title">
-                        Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
-                    </p>
-                    <button class="add-to-cart-btn">Добавить в корзину</button>
-                </div>
-            </div>--}}
-
-
-
-
-
-
-
-
-
-
-
             <div class="row">
                 <div class="catalog">
                     <div class="products">
                         <div class="row">
                             <div class="cards">
 
-                                <div class="card" data-price="2">
-                                    <div class="card__top">
-                                        <a href="#" class="card__image">
-                                            <img src={{asset("./image/iphone-14-pro-max-gold.png")}}/></a>
-                                    </div>
-                                    <div class="card__bottom">
-                                        <!-- Цены на товар (с учетом скидки и без)-->
-                                        <div class="card__prices">
-                                            <div class="card__price card__price--discount">2</div>
-                                            <div class="card__price card__price--common">150 000</div>
+                                @foreach($data as $d)
+                                    <div class="card" data-price="{{$d['price']}}" {{--тут ценна товара для подсчёта через js--}}>
+                                        <div class="card__top">
+
+                                                <img
+                                                    src={{asset('/storage/'. $d['image'])}}> {{--картинка товара--}}
                                         </div>
-                                        <p href="#" class="card__title">
-                                            Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
-                                        </p>
-                                        <button class="add-to-cart-btn">Добавить в корзину</button>
-                                    </div>
-                                </div>
-
-
-                                <div class="card" data-price="1">
-                                    <div class="card__top">
-                                        <a href="#" class="card__image">
-                                            <img src={{asset("./image/iphone-14-pro-max-gold.png")}}/></a>
-                                    </div>
-                                    <div class="card__bottom">
-                                        <!-- Цены на товар (с учетом скидки и без)-->
-                                        <div class="card__prices">
-                                            <div class="card__price card__price--discount">1</div>
-                                            <div class="card__price card__price--common">150 000</div>
+                                        <div class="card__bottom">
+                                            <!-- Цены на товар (с учетом скидки и без)-->
+                                            <div class="card__prices">
+                                                <div class="card__price card__price--discount">13000
+                                                </div> {{--тут выводим ценну товара со скидкой--}}
+                                                <div class="card__price card__price--common">
+                                                    {{$d['price']}}
+                                                </div> {{--тут выводим ценну товара без скидки--}}
+                                            </div>
+                                            <p href="#" class="card__title">
+                                                {{$d['name']}}
+                                                <br>
+                                                {{$d['description']}}
+                                            </p> {{-- здесь название товара--}}
+                                            <button class="add-to-cart-btn">Добавить в корзину</button>
                                         </div>
-                                        <p href="#" class="card__title">
-                                            Смартфон Apple IPhone 14 Pro Max 256Gb, ещкере
-                                        </p>
-                                        <button class="add-to-cart-btn">Добавить в корзину</button>
                                     </div>
-                                </div>
-
-
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -274,6 +227,7 @@
                         <div class="cart-items"></div>
                         <p>Итого: <span id="total-price">0</span> руб</p>
                         <button class="checkout-btn">Оформить заказ</button>
+
                         <p class="checkout-message" style="display: none;"></p>
                     </div>
                 </div>
@@ -340,7 +294,7 @@
                     let productPrice = parseInt(this.closest('.card').getAttribute('data-price'));
                     totalPrice -= productPrice;
                     document.getElementById('total-price').textContent = totalPrice;
-                    let productName = this.closest('.product').querySelector('card').textContent;
+                    let productName = this.closest('.card').querySelector('card').textContent;
                     let productsInCart = cartItems.getElementsByClassName('cart-item');
                     for (let i = 0; i < productsInCart.length; i++) {
                         if (productsInCart[i].textContent.includes(productName)) {

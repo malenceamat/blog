@@ -14,6 +14,6 @@ class Discount extends Model
 
     public function skidka()
     {
-        return $this->hasManyThrough(Shop::class,'discount_shop','discount_id','shop_id');
+        return $this->belongsToMany(Shop::class,'discount_shop','discount_id','shop_id');
     }
 }

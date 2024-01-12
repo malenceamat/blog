@@ -28,8 +28,4 @@ class DiscountController extends Controller
 
         return redirect('redshop');
     }
-
-
-
-
 }
