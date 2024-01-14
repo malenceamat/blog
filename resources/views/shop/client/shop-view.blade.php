@@ -186,7 +186,7 @@
                         <div class="row">
                             <div class="cards">
 
-                                @foreach($data as $d)
+                                @foreach($items as $d)
                                     <div class="card" data-price="{{$d['price']}}" {{--тут ценна товара для подсчёта через js--}}>
                                         <div class="card__top">
 
@@ -196,7 +196,8 @@
                                         <div class="card__bottom">
                                             <!-- Цены на товар (с учетом скидки и без)-->
                                             <div class="card__prices">
-                                                <div class="card__price card__price--discount">13000
+                                                <div class="card__price card__price--discount">
+                                                        {{$d->price_discount}}
                                                 </div> {{--тут выводим ценну товара со скидкой--}}
                                                 <div class="card__price card__price--common">
                                                     {{$d['price']}}
@@ -211,6 +212,11 @@
                                         </div>
                                     </div>
                                 @endforeach
+
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -262,7 +268,7 @@
         `;
                     cartItems.appendChild(product);
                     totalPrice += productPrice;
-                    document.getElementById('total-price').textContent = totalPrice;
+                    document.getElementById('total-price').textContent = `Общая стоимость: ${totalPrice}`;
                     cart.style.display = 'block';
 
                     const quantityBtns = product.querySelectorAll('.quantity-btn');
@@ -282,61 +288,43 @@
                                 totalPrice -= productPrice;
                                 product.remove();
                                 btn.textContent = 'Добавить в корзину';
-                                updateAddToCartBtn(); // Обновляем надпись на кнопке при удалении последнего товара
+                                updateAddToCartBtn();
                             }
                             quantityElement.textContent = quantity;
+                            document.getElementById('total-price').textContent = `Общая стоимость: ${totalPrice}`;
                             updateCartVisibility();
-                            updateTotalPrice();
                         });
                     });
-                } else if (btn.textContent === 'В корзине') {
-                    btn.textContent = 'Добавить в корзину';
-                    let productPrice = parseInt(this.closest('.card').getAttribute('data-price'));
-                    totalPrice -= productPrice;
-                    document.getElementById('total-price').textContent = totalPrice;
-                    let productName = this.closest('.card').querySelector('card').textContent;
-                    let productsInCart = cartItems.getElementsByClassName('cart-item');
-                    for (let i = 0; i < productsInCart.length; i++) {
-                        if (productsInCart[i].textContent.includes(productName)) {
-                            productsInCart[i].remove();
-                        }
-                    }
-                    updateCartVisibility();
-                    updateAddToCartBtn(); // Обновляем надпись на кнопке при удалении товара из корзины
                 }
             });
         });
 
-        function updateTotalPrice() {
-            document.getElementById('total-price').textContent = totalPrice;
-        }
-
-        function updateCartVisibility() {
-            if (cartItems.children.length === 0) {
-                cart.style.display = 'none';
-            }
-        }
-
         function updateAddToCartBtn() {
+            const inCartProducts = cartItems.getElementsByClassName('cart-item');
             addToCartBtns.forEach(btn => {
-                let productName = btn.closest('.card').querySelector('card').textContent;
-                let productsInCart = cartItems.getElementsByClassName('cart-item');
-                let isProductInCart = false;
-                for (let i = 0; i < productsInCart.length; i++) {
-                    if (productsInCart[i].textContent.includes(productName)) {
-                        isProductInCart = true;
+                const productName = btn.closest('.card').querySelector('p').textContent;
+                let added = false;
+                for (let i = 0; i < inCartProducts.length; i++) {
+                    if (inCartProducts[i].textContent.includes(productName)) {
+                        added = true;
                         break;
                     }
                 }
-                if (!isProductInCart) {
+                if (!added) {
                     btn.textContent = 'Добавить в корзину';
                 }
             });
         }
 
         checkoutBtn.addEventListener('click', function () {
-            checkoutMessage.textContent = 'Ваш заказ оформлен. С вами свяжутся для уточнения деталей.';
             checkoutMessage.style.display = 'block';
         });
+
+        function updateCartVisibility() {
+            if (cartItems.children.length === 0) {
+                cartItems.innerHTML = '';
+                cart.style.display = 'none';
+            }
+        }
     });
 </script>
